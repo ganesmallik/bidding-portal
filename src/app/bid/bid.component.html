@@ -1,0 +1,84 @@
+<div class="card" >
+<label for="product-select">Choose a product: &nbsp;</label>
+<select id="product-select" [(ngModel)]="selectedProduct">
+    <option *ngFor="let product of products" [ngValue]="product.id">
+      {{ product.productName }}
+    </option>
+  </select>
+  <button class="highlight" (click)="showBids()">Get</button>
+  </div>
+
+<div class="detail-card" *ngIf="bidDetail">
+    <span>
+        Product Name: 
+    </span>
+    <input type="text" [(ngModel)]="bidDetail.productName"/>
+</div>
+<div class="detail-card" *ngIf="bidDetail">
+    <span>
+        Short Description: 
+    </span>
+    <input type="text" [(ngModel)]="bidDetail.shortDescription"/>
+    
+</div>
+<div class="detail-card" *ngIf="bidDetail">
+    <span>
+        Detailed Description:
+    </span>
+    <input type="text" [(ngModel)]="bidDetail.description"/>
+    
+</div>
+<div class="detail-card" *ngIf="bidDetail">
+    <span>
+        Category: 
+    </span>
+    <select [(ngModel)]="bidDetail.category">
+        <option value="">
+            Select
+          </option>
+        <option value="Painting">
+          Painting
+        </option>
+        <option value="Sculptor">
+            Sculptor
+          </option>
+          <option value="Ornament">
+            Ornament
+          </option>
+      </select>
+    
+</div>
+<div class="detail-card" *ngIf="bidDetail">
+    <span>
+        Starting Price:
+    </span>
+    <input type="number" [(ngModel)]="bidDetail.startingPrice"/>
+    
+</div>
+<div class="detail-card" *ngIf="bidDetail">
+    <span>
+        End Date: : 
+    </span>
+    <input type="datetime" [(ngModel)]="bidDetail.endDate"/>
+    
+</div>
+<div></div>
+<div class="detail-card highlight" *ngIf="bidDetail">Bids</div>
+<div class="detail-card" *ngIf="bidDetail && (bidDetail.bids.length >0)">
+    <table>
+        <tr>
+            <th>Bid Amount</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+        </tr>
+        <tr *ngFor="let bid of bidDetail.bids">
+            <td>{{bid.bidAmount}}</td>
+            <td>{{bid.firstName}} {{bid.lastName}}</td>
+            <td>{{bid.email}}</td>
+            <td>{{bid.phone}}</td>
+        </tr>
+    </table>
+</div>
+<div class="detail-card" *ngIf="bidDetail && (bidDetail.bids.length ==0)">No data to display</div>
+
