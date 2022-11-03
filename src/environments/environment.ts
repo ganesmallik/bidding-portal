@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  sellerAPIBaseUrl: 'https://localhost:44364/'
+  sellerAPIBaseUrl: 'https://i0ieijby05.execute-api.ap-northeast-1.amazonaws.com/Prod/'
 };
 
 /*
